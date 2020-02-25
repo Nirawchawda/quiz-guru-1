@@ -1,0 +1,42 @@
+[
+  {
+    "question": "When was the last time india won the World Cup?",
+    "options": [
+                 {"key" : "2011", "correct": true},
+                 {"key" : "2008", "correct": false},
+                 {"key" : "2010", "correct": false},
+                 {"key" : "1983", "correct": false},
+                 {"key" : "None of the above", "correct": false}
+               ]
+  },
+  {
+    "question": "What was the highest individual score by a batsman in Test Cricket?",
+    "options": [
+                 {"key" : "500", "correct": false},
+                 {"key" : "550", "correct": false},
+                 {"key" : "400", "correct": true},
+                 {"key" : "390", "correct": false},
+                 {"key" : "None of the above", "correct": false}
+               ]
+  },
+  {
+    "question": "Who won the most number of Cricket Worldcups?",
+    "options": [
+                 {"key" : "India", "correct": false},
+                 {"key" : "South Africa", "correct": false},
+                 {"key" : "West Indies", "correct": false},
+                 {"key" : "Australia", "correct": true},
+                 {"key" : "None of the above", "correct": false}
+               ]
+  },
+  {
+    "question": "How many International centuries does Sachin Tendulkar has under his name?",
+    "options": [
+                 {"key" : "49", "correct": false},
+                 {"key" : "30", "correct": false},
+                 {"key" : "51", "correct": true},
+                 {"key" : "76", "correct": false},
+                 {"key" : "None of the above", "correct": false}
+               ]
+  }
+]

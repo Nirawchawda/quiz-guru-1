@@ -1,21 +1,72 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<header> 
+  <h1 class="text-center m-5">Cricket Trivia</h1>
+</header>
+
+<main class="container">
+  <div class="row"> 
+    <div class="col-md-6">
+      <form  class="needs-validation"  [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm)">
+        <div *ngFor = "let ques of questions;let i = index;" class="card bg-light mb-2">
+          <div class="card-header bg-dark text-white">{{ques.question}}</div>
+          <div class="card-body">
+            <div class="form-group" style="max-width:300px;position: relative;margin:0px">
+              <select class="form-control" 
+                      [ngClass]="{'border-danger' : (checkoutForm.controls['answer-'+(i+1)].status == 'INVALID') && submitted }" 
+                      formControlName="{{'answer-'+(i+1)}}">
+                <option *ngIf="checkoutForm.controls['answer-'+(i+1)].status == 'INVALID'">Choose Option</option>
+                <option *ngFor="let opt of ques.options">{{opt.key}}</option>
+              </select>
+              <div class="invalid-tooltip" 
+                  [style.display] = "((checkoutForm.controls['answer-'+(i+1)].status == 'INVALID') && submitted) ? 'block' : 'none'">
+                Please select an option.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card bg-light mb-2">
+          <div class="card-body">
+            <div class="row">
+              <div class="col" >
+                <button type="submit" style="width: 50%" class="btn btn-outline-primary">Submit</button>
+                <button type="button" (click) = "clearResults()" style="width: 50%" class="btn btn-outline-primary">Clear Values</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <div [style.display] = "displayChart ? 'block' : 'none'">
+        <canvas baseChart 
+        height="650"
+          [datasets]="barChartData"
+          [labels]="barChartLabels"
+          [options]="barChartOptions"
+          [legend]="barChartLegend"
+          [chartType]="barChartType">
+        </canvas>
+      </div>    
+    </div>
+  </div>
+</main>
+
+<!-- <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm)">
+  <div *ngFor = "let ques of questions;let i = index;">
+    <label for="name">
+      {{ques.question}}
+    </label>
+    <input type="text" formControlName="{{'answer-'+(i+1)}}">
+    <select class="form-control" formControlName="{{'answer-'+(i+1)}}">
+      <option *ngIf="checkoutForm.controls['answer-'+(i+1)].status == 'INVALID'">choose Option</option>
+      <option *ngFor="let opt of ques.options">{{opt.key}}</option>
+    </select>
+
+    <span *ngIf="checkoutForm.controls['answer-'+(i+1)].status == 'INVALID' && submitted"> asasas </span>
+  </div>
+
+  <button class="button" type="submit">Purchase</button>
+
+</form> -->
 
 <router-outlet></router-outlet>
