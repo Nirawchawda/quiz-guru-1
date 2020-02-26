@@ -111,7 +111,7 @@ export class AppComponent implements OnInit {
 				}.bind(this))
 			}.bind(this)) 
 			console.log(this.analysis);
-			this.barChartData[0].data = [this.analysis.correct,this.analysis.incorrect]
+			this.barChartData[0].data = [this.analysis.incorrect,this.analysis.correct]
 			this.displayChart = true;
 		}
 	}
